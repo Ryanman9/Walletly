@@ -1,12 +1,26 @@
-function BudgetCard(){
+import "./BudgetCard.css";
+
+function BudgetCard({title, amount, spent}){
+    const remaining = amount - spent;
+
     return(
         <div className="budget-card">
-            <h2>Monthly Budget</h2>
+            <h3>{title}</h3>
             
-            <div className="budget-info">
-                <p>Total Budget: ₹10,000</p>
-                <p>Budget spent: ₹4,000</p>
-                <p>Remaining: ₹6,000</p>
+            <p className="budget-amount">
+                ₹{spent} / ₹{amount}
+            </p>
+            
+            <p className="remaining">
+                Remaining: ₹{remaining}
+            </p>
+
+            <div className="progress-bar">
+                <div className="progress-fill"
+                style={{
+                    width: `${(spent/amount)*100}%`,
+                }}
+                ></div>
             </div>
         </div>
     );
