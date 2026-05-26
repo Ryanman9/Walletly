@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Expenses from "../pages/Expenses";
+import Budget from "../pages/Budget";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -11,6 +13,8 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard/>}/>
+        <Route path="expenses" element={<Expenses/>}/>
+        <Route path="budget" element={<Budget />}/>
       </Route>
 
       <Route path="/login" element={<Login />} />

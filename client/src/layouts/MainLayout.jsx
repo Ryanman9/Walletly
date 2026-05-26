@@ -5,12 +5,15 @@ import Sidebar from "../components/layout/Sidebar";
 
 function MainLayout(){
     return(
-        <div>
+        <div className="app-layout">
             <Sidebar/>
 
-            <div>
+            <div className="main-section">
                 <Navbar/>
-                <Outlet/>
+
+                <div className="page-content">
+                    <Outlet/>
+                </div>
             </div>
         </div>
     );
