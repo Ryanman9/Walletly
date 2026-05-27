@@ -1,10 +1,23 @@
+import { useState } from "react";
+
 import BudgetCard from "../components/dashboard/BudgetCard";
 import ExpensesForm from "../components/dashboard/ExpensesForm";
 import ExpensesList from "../components/dashboard/ExpensesList";
 
 function Dashboard(){
+    const [expenses, setExpenses] = useState([]);
+
+    function addExpense(expenseData){
+        const newExpense = {
+            id: Date.now(),
+            ...expenseData,
+        };
+
+        setExpenses([...expenses, newExpense]);
+    }
+
     return (
-        <div>
+        <div className="dashboard">
             <h1>Dashboard</h1>
 
             <div className="budget-container">
@@ -25,9 +38,11 @@ function Dashboard(){
                     amount={3000}
                     spent={1200}
                 />
+            </div>
 
-            <ExpensesForm/>
-            <ExpensesList/>
+            <div className="dashboard-bottom">
+                <ExpensesForm onAddExpense = {addExpense}/>
+                <ExpensesList expenses={expenses}/>
             </div>
         </div>
     );
