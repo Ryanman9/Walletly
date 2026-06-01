@@ -7,6 +7,25 @@ import ExpensesList from "../components/dashboard/ExpensesList";
 function Dashboard(){
     const [expenses, setExpenses] = useState([]);
 
+    const totalSpent = expenses.reduce(
+        (total, expense) => total + Number(expense.amount),
+        0
+    );
+
+    const foodSpent = expenses
+    .filter((expense) => expense.category === "Food")
+    .reduce(
+        (total, expense) => total + Number(expense.amount),
+        0
+    );
+
+    const travelSpent = expenses
+    .filter((expense) => expense.category === "Travel")
+    .reduce(
+        (total, expense) => total + Number(expense.amount),
+        0
+    );
+
     function addExpense(expenseData){
         const newExpense = {
             id: Date.now(),
@@ -24,19 +43,19 @@ function Dashboard(){
                 <BudgetCard
                     title="Monthly Budget"
                     amount={10000}
-                    spent={4500}
+                    spent={totalSpent}
                 />
 
                 <BudgetCard
                     title="Food Budget"
                     amount={5000}
-                    spent={3200}
+                    spent={foodSpent}
                 />
 
                 <BudgetCard
                     title="Travel Budget"
                     amount={3000}
-                    spent={1200}
+                    spent={travelSpent}
                 />
             </div>
 

@@ -1,4 +1,4 @@
-import "./ExpenseItem";
+import "./ExpenseItem.css";
 
 function ExpenseItem({ title, amount, category }) {
   return (

@@ -1,5 +1,5 @@
 import ExpenseItem from "./ExpenseItem";
-import "./ExpensesList";
+import "./ExpensesList.css";
 
 function ExpensesList({expenses}) {
   return (

@@ -19,7 +19,7 @@ function ExpensesForm({onAddExpense}) {
 
     setTitle("");
     setAmount("");
-    setCategory("");
+    setCategory("Food");
   }
 
   return (
