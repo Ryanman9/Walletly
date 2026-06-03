@@ -1,0 +1,35 @@
+.budget-form {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.budget-form input {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.budget-form input:focus {
+  border-color: #4caf50;
+}
+
+.budget-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.budget-form button:hover {
+  opacity: 0.9;
+}

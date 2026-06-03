@@ -3,9 +3,13 @@ import { useState } from "react";
 import BudgetCard from "../components/dashboard/BudgetCard";
 import ExpensesForm from "../components/dashboard/ExpensesForm";
 import ExpensesList from "../components/dashboard/ExpensesList";
+import BudgetForm from "../components/dashboard/BudgetForm";
 
 function Dashboard(){
     const [expenses, setExpenses] = useState([]);
+    const [monthlyBudget, setMonthlyBudget] = useState(0);
+    const [foodBudget, setFoodBudget] = useState(0);
+    const [travelBudget, setTravelBudget] = useState(0);
 
     const totalSpent = expenses.reduce(
         (total, expense) => total + Number(expense.amount),
@@ -26,35 +30,46 @@ function Dashboard(){
         0
     );
 
+    function setBudgetData(budgetData) {
+        setMonthlyBudget(budgetData.monthly);
+        setFoodBudget(budgetData.food);
+        setTravelBudget(budgetData.travel);
+    }
+
     function addExpense(expenseData){
         const newExpense = {
             id: Date.now(),
             ...expenseData,
         };
 
-        setExpenses([...expenses, newExpense]);
+        setExpenses((prevExpenses) => [
+            ...prevExpenses,
+            newExpense
+        ]);;
     }
 
     return (
         <div className="dashboard">
             <h1>Dashboard</h1>
 
+            <BudgetForm onSetBudget={setBudgetData} />
+
             <div className="budget-container">
                 <BudgetCard
                     title="Monthly Budget"
-                    amount={10000}
+                    amount={monthlyBudget}
                     spent={totalSpent}
                 />
 
                 <BudgetCard
                     title="Food Budget"
-                    amount={5000}
+                    amount={foodBudget}
                     spent={foodSpent}
                 />
 
                 <BudgetCard
                     title="Travel Budget"
-                    amount={3000}
+                    amount={travelBudget}
                     spent={travelSpent}
                 />
             </div>
