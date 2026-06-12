@@ -1,18 +1,16 @@
+import ExpenseForm from "../components/ExpenseForm";
+
 function AddExpense(){
     return (
-        <div>
-            <h2>Add Expense</h2>
-            <input type="text" placeholder="Expense name"/>
-            <input type="number" placeholder="Amount"/>
+        <div className="addExpense-page">
+            <header className="page-header">
+                <p className="over-heading">Record spending</p>
+                <h1>Addd Expense</h1>
 
-            <select>
-                <option>Food</option>
-                <option>Travel</option>
-                <option>Shopping</option>
-                <option>Entertainment</option>
-            </select>
+                <p>Add simple day-to-day expenses</p>
+            </header>
 
-            <button>Add Expense</button>
+            <ExpenseForm />
         </div>
     );
 }

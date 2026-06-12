@@ -1,17 +1,23 @@
 import SummaryCards from "../components/SummaryCards";
+import BudgetCard from "../components/BudgetCard"
 
 function Dashboard(){
     return(
-        <div>
-            <header>
-                <p>Student Budget Dashboard</p>
+        <div className="main-page">
+            <header className="page-header">
+                <p className="over-heading">Student Budget Dashboard</p>
                 <h1>Walletly-Expense Tracket</h1>
                 <p>Track small daily spending</p>
             </header>
 
             <SummaryCards title="Budget" amount="5000"/>
-            <section>Budget Overview</section>
-            <section>Recent Expenses</section>
+            
+            <div className="two-column">
+                <BudgetCard />
+
+                <section>Quick Overview of the month</section>
+            </div>
+
         </div>
     );
 }
