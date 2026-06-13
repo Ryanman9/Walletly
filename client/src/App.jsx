@@ -22,15 +22,21 @@ function App(){
         setMonth(newMonth);
     }
 
+    const deleteExpense = (expenseId) => {
+        setExpenses((currentExpenses) => currentExpenses.filter((expense) => expense.id !== expenseId)
+        );
+    };
+
     return(
         <div className="app-page">
             <main className="main-content">
                 <AppRoutes
-                    expense = {expenses}
+                    expenses = {expenses}
                     onAddExpense = {addExpense}
                     budget = {budget}
                     month = {month}
                     onSaveBudget = {saveBudget}
+                    onDeleteExpense = {deleteExpense}
                 />
             </main>
         </div>

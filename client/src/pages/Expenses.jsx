@@ -1,6 +1,6 @@
 import ExpenseList from "../components/ExpenseList";
 
-function Expenses(){
+function Expenses({ expenses, onDeleteExpense }){
     return(
         <div className="Expense-page">
             <header className="page-header">
@@ -9,7 +9,7 @@ function Expenses(){
                 <p>Review every expense entry and remove mistakes</p>
             </header>
             
-            <ExpenseList />
+            <ExpenseList expenses={expenses} onDeleteExpense={onDeleteExpense}/>
         </div>
     );
 }
