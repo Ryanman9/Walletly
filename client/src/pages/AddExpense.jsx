@@ -1,6 +1,6 @@
 import ExpenseForm from "../components/ExpenseForm";
 
-function AddExpense(){
+function AddExpense({ onAddExpense }){
     return (
         <div className="addExpense-page">
             <header className="page-header">
@@ -10,7 +10,7 @@ function AddExpense(){
                 <p>Add simple day-to-day expenses</p>
             </header>
 
-            <ExpenseForm />
+            <ExpenseForm onAddExpense = {onAddExpense}/>
         </div>
     );
 }

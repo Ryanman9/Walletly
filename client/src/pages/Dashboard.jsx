@@ -10,7 +10,9 @@ function Dashboard(){
                 <p>Track small daily spending</p>
             </header>
 
-            <SummaryCards title="Budget" amount="5000"/>
+            <SummaryCards 
+                budget={budget}
+            />
             
             <div className="two-column">
                 <BudgetCard />

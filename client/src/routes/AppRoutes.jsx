@@ -5,14 +5,14 @@ import Budget from "../pages/Budget";
 import Analytics from "../pages/Analytics";
 import AddExpense from "../pages/AddExpense";
 
-function AppRoutes() {
+function AppRoutes({onAddExpense}) {
     return (
         <Routes>
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/expenses" element={<Expenses/>}/>
             <Route path="/budget" element={<Budget/>}/>
             <Route path="/analytics" element={<Analytics/>}/>
-            <Route path="/addexpense" element={<AddExpense/>}/>
+            <Route path="/addexpense" element={<AddExpense onAddExpense={onAddExpense}/>}/>
         </Routes>
     );
 }
