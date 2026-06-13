@@ -1,4 +1,32 @@
-function Budget(){
+import { useState } from "react";
+
+function Budget({budget, month, onSaveBudget}){
+    const [budgetAmount, setBudgetAmount] = useState(0);
+    const [selectedMonth, setSelectedMonth] = useState(month);
+    const [error, setError] = useState("");
+
+    const handleReset = () => {
+        setBudgetAmount(0);
+        setSelectedMonth("2026-06");
+        setError("");
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if(Number(budgetAmount) < 0){
+            setError("Budget cannot be negative!");
+            return;
+        }
+
+        onSaveBudget(Number(budgetAmount), selectedMonth);
+        setError("Budget saved successfully");
+
+        setTimeout(() => {
+            handleReset();
+        }, 2000);
+    };
+
     return(
         <div className="budget-page">
             <header className="page-header">
@@ -7,20 +35,33 @@ function Budget(){
                 <p>Choose a realistic monthly spending limit for your student expenses.</p>
             </header>
 
-            <form className="budget-form">
+            <form className="budget-form" onSubmit={handleSubmit}>
+                {error && <p className="error-msg">{error}</p>}
+
                 <label>
                     Monthly Budget Amount
+                    <input 
+                        type = "number"
+                        value={budgetAmount}
+                        onChange={(event) => setBudgetAmount(event.target.value)}
+                    />
                 </label>
 
                 <label>
                     Month Selector
+
+                    <input 
+                        type="month"
+                        value={selectedMonth}
+                        onChange={(event) => setSelectedMonth(event.target.value)}
+                    />
                 </label>
 
                 <div className="btn-row">
                     <button type="submit" className="primary-btn">
                         Save Budget
                     </button>
-                    <button type="button" className="secondary-btn">
+                    <button type="button" className="secondary-btn" onClick={handleReset}>
                         Reset
                     </button>
                 </div>

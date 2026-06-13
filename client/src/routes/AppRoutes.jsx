@@ -5,12 +5,12 @@ import Budget from "../pages/Budget";
 import Analytics from "../pages/Analytics";
 import AddExpense from "../pages/AddExpense";
 
-function AppRoutes({onAddExpense}) {
+function AppRoutes({onAddExpense, month, budget, onSaveBudget}) {
     return (
         <Routes>
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/expenses" element={<Expenses/>}/>
-            <Route path="/budget" element={<Budget/>}/>
+            <Route path="/budget" element={<Budget budget={budget} month={month} onSaveBudget={onSaveBudget}/>}/>
             <Route path="/analytics" element={<Analytics/>}/>
             <Route path="/addexpense" element={<AddExpense onAddExpense={onAddExpense}/>}/>
         </Routes>
