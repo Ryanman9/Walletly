@@ -26,11 +26,36 @@ function Dashboard({budget, month, expenses, totalExpenses}){
             />
             
             <div className="two-column">
-                <BudgetCard />
+                <BudgetCard budget={budget} month={month} totalExpenses={totalExpenses}/>
 
-                <section>Quick Overview of the month</section>
+                <section className="stat-card">
+                    <div className="section-heading">
+                        <div>
+                            <p className="over-heading">Quick stats</p>
+                            <h2>This month</h2>
+                        </div>
+                    </div>
+
+                    <div className="stats-list">
+                        <p>
+                            Average transaction
+                            <strong>
+                                ₹{expenses.length ? Math.round(totalExpenses/expenses.length).toLocaleString() : 0}
+                            </strong>
+                        </p>
+                        <p>
+                            Biggest spend
+                            <strong>{highestExpense.title}</strong>
+                        </p>
+                        <p>
+                            Budget status
+                            <strong>{totalExpenses <= budget ? "On track" : "Over budget"}</strong>
+                        </p>
+                    </div>
+                </section>
             </div>
 
+            <section>Recent list</section>
         </div>
     );
 }
