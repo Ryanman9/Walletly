@@ -37,6 +37,7 @@ function App(){
                     month = {month}
                     onSaveBudget = {saveBudget}
                     onDeleteExpense = {deleteExpense}
+                    totalExpenses={totalExpenses}
                 />
             </main>
         </div>
