@@ -28,14 +28,14 @@ function Budget({budget, month, onSaveBudget}){
     };
 
     return(
-        <div className="budget-page">
+        <div className="page-container">
             <header className="page-header">
                 <p className="over-heading">Plan first</p>
                 <h1>Set Monthly Budget</h1>
                 <p>Choose a realistic monthly spending limit for your student expenses.</p>
             </header>
 
-            <form className="budget-form" onSubmit={handleSubmit}>
+            <form className="card-form" onSubmit={handleSubmit}>
                 {error && <p className="error-msg">{error}</p>}
 
                 <label>

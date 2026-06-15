@@ -2,7 +2,7 @@ import ExpenseForm from "../components/ExpenseForm";
 
 function AddExpense({ onAddExpense }){
     return (
-        <div className="addExpense-page">
+        <div className="page-container">
             <header className="page-header">
                 <p className="over-heading">Record spending</p>
                 <h1>Addd Expense</h1>

@@ -12,7 +12,7 @@ function Dashboard({budget, month, expenses, totalExpenses}){
     );
 
     return(
-        <div className="main-page">
+        <div className="page-container">
             <header className="page-header">
                 <p className="over-heading">Student Budget Dashboard</p>
                 <h1>Walletly-Expense Tracket</h1>

@@ -2,7 +2,7 @@ import ExpenseList from "../components/ExpenseList";
 
 function Expenses({ expenses, onDeleteExpense }){
     return(
-        <div className="Expense-page">
+        <div className="page-container">
             <header className="page-header">
                 <p className="over-heading">Search, Filter, Sort</p>
                 <h1>Expenses</h1>
