@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
+import { Home, PlusCircle, Receipt, BarChart3, Wallet } from "lucide-react";
 
 const navItems = [
-    {label:"Dashboard", path:"/"},
-    {label:"Add Expense", path:"/addexpense"},
-    {label:"Expenses", path:"/expenses"},
-    {label:"Analytics", path:"/analytics"},
-    {label:"Budget", path:"/budget"},
+    { label: "Dashboard", path: "/", icon: Home },
+    { label: "Add Expense", path: "/addexpense", icon: PlusCircle },
+    { label: "Expenses", path: "/expenses", icon: Receipt },
+    { label: "Analytics", path: "/analytics", icon: BarChart3 },
+    { label: "Budget", path: "/budget", icon: Wallet },
 ]
 
 function Navbar(){
@@ -20,15 +21,20 @@ function Navbar(){
             </div>
 
             <nav className="nav-links">
-                {navItems.map((item) => (
+                {navItems.map((item) => {
+                    const Icon = item.icon;
+
+                    return(
                     <NavLink
                         key={item.path}
                         to={item.path}
                         className={({isActive}) => (isActive? "nav-link active" : "nav-link")}
-                    >
-                        {item.label}
+                    >   
+                        <Icon size={18}/>
+                        <span>{item.label}</span>
                     </NavLink>
-                ))}
+                    );
+                })}
             </nav>
         </aside>
     );

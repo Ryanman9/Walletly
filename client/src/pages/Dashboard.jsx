@@ -55,7 +55,26 @@ function Dashboard({budget, month, expenses, totalExpenses}){
                 </section>
             </div>
 
-            <section>Recent list</section>
+            <section className="recent-card">
+                <div className="section-heading">
+                    <div>
+                        <p className="over-heading">Latest 5</p>
+                        <h2>Recent Expenses</h2>
+                    </div>
+                </div>
+
+                <div className="recent-list">
+                    {recentExpenses.map((expense) => (
+                        <article className="recent-item" key={expense.id}>
+                            <div>
+                                <h3>{expense.title}</h3>
+                                <p>{expense.category} • {expense.date}</p>
+                            </div>
+                            <strong>₹{expense.amount.toLocaleString()}</strong>
+                        </article>
+                    ))}
+                </div>
+            </section>
         </div>
     );
 }

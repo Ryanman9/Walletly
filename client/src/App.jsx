@@ -29,6 +29,7 @@ function App(){
 
     return(
         <div className="app-page">
+            <Navbar />
             <main className="main-content">
                 <AppRoutes
                     expenses = {expenses}
