@@ -9,7 +9,7 @@ const navItems = [
     { label: "Budget", path: "/budget", icon: Wallet },
 ]
 
-function Navbar(){
+function Navbar({isDarkTheme, onToggleTheme}){
     return(
         <aside className="sidebar">
             <div className="logo">
@@ -36,6 +36,15 @@ function Navbar(){
                     );
                 })}
             </nav>
+
+            <button
+                type="button"
+                className="theme-toggle"
+                onClick={onToggleTheme}
+            >
+                <span>{isDarkTheme ? "☀️" : "🌙"}</span>
+                {isDarkTheme ? "Light Theme" : "Dark Theme"}
+            </button>
         </aside>
     );
 }

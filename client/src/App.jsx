@@ -8,10 +8,18 @@ function App(){
     const [expenses, setExpenses] = useState(initialExpenses);
     const [month, setMonth] = useState("2026-06");
     const [budget, setBudget] = useState("10000");
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-    const totalExpenses = useMemo(
-        () => expenses.reduce((total, expense) => total+expense.amount, 0),
-    );
+    const toggleTheme = () => {
+        setIsDarkTheme((currentTheme) => !currentTheme);
+    };
+
+    const totalExpenses = useMemo(() => {
+        return expenses.reduce(
+            (total, expense) => total + expense.amount,
+            0
+        );
+    }, [expenses]);
 
     const addExpense = (expense) => {
         setExpenses((currentExpenses) => [expense, ...currentExpenses]);
@@ -28,8 +36,8 @@ function App(){
     };
 
     return(
-        <div className="app-page">
-            <Navbar />
+        <div className= {isDarkTheme ? "app-page dark-theme" : "app-page"}>
+            <Navbar isDarkTheme={isDarkTheme} onToggleTheme={toggleTheme} />
             <main className="main-content">
                 <AppRoutes
                     expenses = {expenses}
