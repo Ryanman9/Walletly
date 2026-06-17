@@ -115,7 +115,7 @@ function ExpenseForm({ onAddExpense }){
                 <button type="submit" className="primary-btn">
                     Add Expense
                 </button>
-                <button type="button" className="secondary-btn">
+                <button type="button" className="secondary-btn" onClick={clearForm}>
                     Clear Form
                 </button>
             </div> 
