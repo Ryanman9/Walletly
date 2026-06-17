@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Design Token */
+
+:root {
+  /* Primary Colors */
+
+  --clr-green-900: #06231d;
+  --clr-green-800: #0c342c;
+  --clr-green-700: #075244;
+  --clr-green-600: #076653;
+  --clr-green-500: #13806a;
+  --clr-green-400: #2d9b7f;
+  --clr-green-300: #5fbea3;
+  --clr-green-200: #97d9c0;
+  --clr-green-150: #c2edd8;
+  --clr-green-100: #e2fbce;
+  --clr-green-50:  #f4fff0;
+
+  /* Accent Colors */
+
+  --clr-accent:        #e3ef26;
+  --clr-accent-light:  #effa74;
+  --clr-accent-dim:    #cdd81f;
+
+  /* Light Theme */
+
+  --clr-bg-light:             #fffdee;
+  --clr-surface-light:        #ffffff;
+  --clr-border-light:         #d9e8d2;
+  --clr-text-primary-light:   #0c342c;
+  --clr-text-secondary-light: #3d665b;
+  --clr-text-muted-light:     #6f9087;
+
+  /* Dark Theme */
+
+  --clr-bg-dark:             #06231d;
+  --clr-surface-dark:        #0c342c;
+  --clr-surface2-dark:       #076653;
+  --clr-border-dark:         #145543;
+  --clr-text-primary-dark:   #f4fff0;
+  --clr-text-secondary-dark: #b6e8d5;
+  --clr-text-muted-dark:     #78b39c;
+
+  /* Danger Colors */
+
+  --clr-danger:        #ff5f6d;
+  --clr-danger-bg:     #fdeaea;
+  --clr-danger-border: #f5b0b0;
+
+  /* Border, Text & Shadows */
+
+  --bg:             var(--clr-bg-light);
+  --surface:        var(--clr-surface-light);
+  --border:         var(--clr-border-light);
+  --text-primary:   var(--clr-text-primary-light);
+  --text-secondary: var(--clr-text-secondary-light);
+  --text-muted:     var(--clr-text-muted-light);
+  --sidebar-bg: #0d2818;
+  --sidebar-w:  220px;
+  --radius-sm:   6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+  --radius-full: 999px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+  --sp-1:  4px; --sp-2:  8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+  --sp-6: 24px; --sp-7: 28px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px;
+  --font-base: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --text-xs:   0.72rem; --text-sm:   0.82rem; --text-base: 0.9rem;
+  --text-md:   1rem;    --text-lg:   1.125rem; --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;  --text-3xl:  1.875rem; --text-4xl:  2.25rem;
+  --transition:    150ms ease;
+  --transition-md: 250ms ease;
+}
