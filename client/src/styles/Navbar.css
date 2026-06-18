@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(135deg, var(--clr-accent-light), var(--clr-accent));
+    background: var(--logo-gradient);
 
     color: var(--clr-green-900);
 
@@ -79,7 +79,7 @@
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, var(--clr-accent-Vlight), var(--clr-accent)); 
+    background: var(--nav-active-gradient); 
 
     color: var(--clr-green-900);
     font-weight: 600;
@@ -115,11 +115,7 @@
 
     border-radius: var(--radius-full);
 
-    background: linear-gradient(
-        135deg,
-        var(--clr-accent-light),
-        var(--clr-accent)
-    );
+    background: var(--logo-gradient);
 
     color: var(--clr-green-900);
 

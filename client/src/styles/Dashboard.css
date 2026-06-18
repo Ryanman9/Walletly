@@ -34,7 +34,7 @@
   align-items:center;
   justify-content:center;
 
-  background: var(--clr-accent);
+  background: var(--icon-gradient);
 
   font-size:1.4rem;
   flex-shrink: 0;
