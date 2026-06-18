@@ -43,11 +43,12 @@
 .logo h1 {
     font-size: var(--text-lg);
     font-weight: 700;
+    color: var(--text-primary);
 }
 
 .logo p {
     font-size: var(--text-sm);
-    color: var(--clr-accent);
+    color: var(--text-overH);
 }
 
 .nav-links {
@@ -74,10 +75,11 @@
 
 .nav-link:hover {
     background: rgba(255,255,255,0.06);
+    transform: translateY(-1px);
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, var(--clr-accent-light), var(--clr-accent)); 
+    background: linear-gradient(135deg, var(--clr-accent-Vlight), var(--clr-accent)); 
 
     color: var(--clr-green-900);
     font-weight: 600;
@@ -132,4 +134,9 @@
 
 .theme-toggle:hover{
     transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .logo h1 { font-size: var(--text-base); }
+  .logo p { display: none; }
 }

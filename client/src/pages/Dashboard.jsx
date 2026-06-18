@@ -1,5 +1,6 @@
 import SummaryCards from "../components/SummaryCards";
-import BudgetCard from "../components/BudgetCard"
+import BudgetCard from "../components/BudgetCard";
+import "../styles/Dashboard.css";
 
 function Dashboard({budget, month, expenses, totalExpenses}){
     const recentExpenses = [...expenses]
@@ -15,7 +16,7 @@ function Dashboard({budget, month, expenses, totalExpenses}){
         <div className="page-container">
             <header className="page-header">
                 <p className="over-heading">Student Budget Dashboard</p>
-                <h1>Walletly-Expense Tracket</h1>
+                <h1>Walletly-Expense Tracker</h1>
                 <p>Track small daily spending</p>
             </header>
 

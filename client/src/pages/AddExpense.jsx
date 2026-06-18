@@ -5,7 +5,7 @@ function AddExpense({ onAddExpense }){
         <div className="page-container">
             <header className="page-header">
                 <p className="over-heading">Record spending</p>
-                <h1>Addd Expense</h1>
+                <h1>Add Expense</h1>
 
                 <p>Add simple day-to-day expenses</p>
             </header>
