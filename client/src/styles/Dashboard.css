@@ -1,3 +1,5 @@
+/* Summary Card */
+
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -71,3 +73,54 @@
 
 .summary-card:nth-child(1)    { background: #f5f9ec; border-color: #d9ecbe; }
 .summary-card:nth-child(1) h3 { color: var(--clr-green-800); }
+
+
+
+/* Budget Card */
+
+.buget-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  transition: box-shadow var(--t), background var(--t-md);
+}
+.buget-card:hover { box-shadow: var(--shadow-md); }
+
+.buget-card .section-heading > span {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  background: var(--clr-accent);
+  color: var(--clr-green-900);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+
+/* Stats card */
+
+.stat-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  transition: box-shadow var(--t), background var(--t-md);
+}
+.stat-card:hover { box-shadow: var(--shadow-md); }
+
+
+/* Recenet Card */
+
+.recent-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  margin-top: var(--sp-5);
+  transition: box-shadow var(--t), background var(--t-md);
+}
+ 
+.recent-list { display: flex; flex-direction: column; }
