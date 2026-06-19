@@ -25,8 +25,10 @@ function ExpenseList({ expenses, onDeleteExpense }){
         <section className="expenselist-page">
             <div>
                 <div className="section-heading">
-                    <p className="over-heading">All Transaction</p>
-                    <h2>Expense List</h2>
+                    <div>
+                        <p className="over-heading">All Transaction</p>
+                        <h2>Expense List</h2>
+                    </div>
                 </div>
             </div>
 

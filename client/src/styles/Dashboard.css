@@ -38,6 +38,11 @@
 
   font-size:1.4rem;
   flex-shrink: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.summary-icon:hover {
+  transform: rotate(360deg);
 }
 
 .summary-card:hover {
