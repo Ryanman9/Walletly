@@ -201,7 +201,7 @@
 }
 
 .recent-item:last-child { border-bottom: none; }
-.recent-item:hover      { background: rgba(0,0,0,.025); }
+.recent-item:hover      { background: rgba(76,175,80,.04); }
  
 .recent-item > div {
   display: flex;

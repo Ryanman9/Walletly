@@ -39,14 +39,20 @@ function ExpenseList({ expenses, onDeleteExpense }){
                 />
 
                 <select
-                    value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}
-                >
-                    <option value="All"></option>
-                        {categories.map((category) =>(
-                            <option key={category} value={category}>
-                                {category}
-                            </option>
-                        ))}
+                    value={categoryFilter}
+                    onChange={(event) => setCategoryFilter(event.target.value)}
+                    >
+                    <option value="" disabled>
+                        Select Category
+                    </option>
+
+                    <option value="All">All</option>
+
+                    {categories.map((category) => (
+                        <option key={category} value={category}>
+                        {category}
+                        </option>
+                    ))}
                 </select>
 
                 <select value={sortBy} onChange={(event) => setSortBy(event.target.value)}>

@@ -1,14 +1,17 @@
 import { useState } from "react";
+import "../styles/BudgetPage.css";
 
 function Budget({budget, month, onSaveBudget}){
     const [budgetAmount, setBudgetAmount] = useState(0);
     const [selectedMonth, setSelectedMonth] = useState(month);
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     const handleReset = () => {
         setBudgetAmount(0);
         setSelectedMonth("2026-06");
         setError("");
+        setSuccess("");
     };
 
     const handleSubmit = (event) => {
@@ -20,7 +23,7 @@ function Budget({budget, month, onSaveBudget}){
         }
 
         onSaveBudget(Number(budgetAmount), selectedMonth);
-        setError("Budget saved successfully");
+        setSuccess("Budget saved successfully");
 
         setTimeout(() => {
             handleReset();
@@ -37,6 +40,7 @@ function Budget({budget, month, onSaveBudget}){
 
             <form className="card-form" onSubmit={handleSubmit}>
                 {error && <p className="error-msg">{error}</p>}
+                {success && <p className="success-msg">{success}</p>}
 
                 <label>
                     Monthly Budget Amount

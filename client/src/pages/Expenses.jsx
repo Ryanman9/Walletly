@@ -1,4 +1,5 @@
 import ExpenseList from "../components/ExpenseList";
+import "../styles/ExpenseList.css";
 
 function Expenses({ expenses, onDeleteExpense }){
     return(

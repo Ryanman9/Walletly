@@ -10,6 +10,7 @@ const emptyExpense = {
 
 function ExpenseForm({ onAddExpense }){
     const [expense, setExpense] = useState(emptyExpense);
+    const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
     const handleChange = (event) => {
@@ -20,6 +21,7 @@ function ExpenseForm({ onAddExpense }){
     const clearForm = () => {
         setExpense(emptyExpense);
         setError("");
+        setSuccess("");
     };
 
     const handleSubmit = (event) => {
@@ -27,11 +29,13 @@ function ExpenseForm({ onAddExpense }){
 
         if(!expense.title.trim()){
             setError("Please enter an expense title!");
+            setSuccess("");
             return;
         }
 
         if(Number(expense.amount) <= 0){
             setError("Amount should be greater than zero!");
+            setSuccess("");
             return;
         }
 
@@ -43,7 +47,10 @@ function ExpenseForm({ onAddExpense }){
             date: expense.date,
         });
 
-        clearForm();
+        setError("");
+        setSuccess("Expense added successfully!");
+
+        setExpense(emptyExpense);
     };
 
     return(
@@ -56,6 +63,7 @@ function ExpenseForm({ onAddExpense }){
             </div>
 
             {error && <p className="error-msg">{error}</p>}
+            {success && <p className="success-msg">{success}</p>}
 
             <label>
                 Expense Title

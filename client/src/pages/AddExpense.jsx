@@ -1,4 +1,5 @@
 import ExpenseForm from "../components/ExpenseForm";
+import "../styles/ExpenseForm.css";
 
 function AddExpense({ onAddExpense }){
     return (

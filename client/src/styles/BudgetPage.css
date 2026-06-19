@@ -1,0 +1,147 @@
+/* ══════════════════════════════════════════════
+   CARD FORM
+══════════════════════════════════════════════ */
+
+.card-form {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--sp-5);
+  transition: background var(--transition-md),
+              border-color var(--transition-md);
+}
+
+.card-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-form input {
+  height: 46px;
+  width: 100%;
+  padding: 0 var(--sp-4);
+
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition: border-color var(--transition),
+              box-shadow var(--transition),
+              background var(--transition);
+}
+
+.card-form input:focus {
+  border-color: var(--clr-accent-dark);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.15);
+}
+
+.card-form input:hover {
+  border-color: var(--clr-accent);
+}
+
+/* Remove number arrows */
+
+.card-form input[type="number"]::-webkit-inner-spin-button,
+.card-form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.card-form input[type="number"] {
+  appearance: textfield;
+}
+
+/* Month Picker */
+
+.card-form input[type="month"] {
+  cursor: pointer;
+}
+
+.card-form input[type="month"]::-webkit-calendar-picker-indicator {
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+/* Dark mode icon fix only */
+
+.dark-theme .card-form input[type="month"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+
+
+/* ══════════════════════════════════════════════
+   ANALYTICS PAGE
+══════════════════════════════════════════════ */
+
+.analytics-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-5);
+}
+
+.analytics-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+
+  transition: box-shadow var(--transition),
+              transform var(--transition),
+              background var(--transition-md);
+}
+
+.analytics-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.analytics-card.full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* Placeholder */
+
+.analytics-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--sp-3);
+  padding: var(--sp-12) var(--sp-6);
+
+  min-height: 180px;
+
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.analytics-placeholder svg {
+  opacity: 0.4;
+}
+
+.analytics-placeholder p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}

@@ -8,7 +8,7 @@ function App(){
     const [expenses, setExpenses] = useState(initialExpenses);
     const [month, setMonth] = useState("2026-06");
     const [budget, setBudget] = useState(10000);
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
 
     const toggleTheme = () => {
         setIsDarkTheme((currentTheme) => !currentTheme);
