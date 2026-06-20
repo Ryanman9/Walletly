@@ -4,6 +4,7 @@ import Expenses from "../pages/Expenses";
 import Budget from "../pages/Budget";
 import Analytics from "../pages/Analytics";
 import AddExpense from "../pages/AddExpense";
+import Login from "../pages/Login";
 
 function AppRoutes({onAddExpense, month, budget, onSaveBudget, expenses, onDeleteExpense, totalExpenses}) {
     return (
@@ -15,6 +16,16 @@ function AppRoutes({onAddExpense, month, budget, onSaveBudget, expenses, onDelet
                     expenses={expenses}
                     totalExpenses={totalExpenses}
                 />}/>
+            <Route
+                path="/login"
+                element={
+                    localStorage.getItem("isLoggedIn") === "true" ? (
+                    <Navigate to="/" replace />
+                    ) : (
+                    <Login />
+                    )
+                }
+                />
             <Route path="/expenses" element={<Expenses expenses={expenses} onDeleteExpense={onDeleteExpense}/>}/>
             <Route path="/budget" element={<Budget budget={budget} month={month} onSaveBudget={onSaveBudget}/>}/>
             <Route path="/analytics" element={<Analytics/>}/>

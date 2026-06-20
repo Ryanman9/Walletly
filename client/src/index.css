@@ -230,7 +230,7 @@ ul, ol { list-style: none; }
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: background var(--t), transform var(--t), box-shadow var(--t);
+  transition: background var(--transition, transform var(--transition), box-shadow var(--transition));
 }
 
 .primary-btn:hover  { 
@@ -254,7 +254,7 @@ ul, ol { list-style: none; }
   border: 1.5px solid var(--border);
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: background var(--t), border-color var(--t), color var(--t);
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
 .secondary-btn:hover { background: var(--surface); border-color: var(--clr-green-300); color: var(--text-primary); }
  
