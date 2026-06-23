@@ -10,7 +10,7 @@ const updateBudget = async (req, res, next) => {
             {new: true, runValidators: true}
         );
 
-        res.staus(200).json ({
+        res.status(200).json ({
             success: true,
             message: "Budget updated successfully",
             user: {
