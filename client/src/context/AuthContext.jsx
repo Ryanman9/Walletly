@@ -33,20 +33,20 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         const verifySession = async () => {
-        const token = localStorage.getItem(TOKEN_KEY);
-        if (!token) {
-            setLoading(false);
-            return;
-        }
-        try {
-            const data = await authAPI.getProfile();
-            setUser(data.user);
-            localStorage.setItem(USER_KEY, JSON.stringify(data.user));
-        } catch {
-            clearAuth();
-        } finally {
-            setLoading(false);
-        }
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) {
+                setLoading(false);
+                return;
+            }
+            try {
+                const data = await authAPI.getProfile();
+                setUser(data.user);
+                localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+            } catch {
+                clearAuth();
+            } finally {
+                setLoading(false);
+            }
         };
 
         verifySession();
