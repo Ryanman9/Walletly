@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import { Home, PlusCircle, Receipt, BarChart3, Wallet, Moon, Sun } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Home, PlusCircle, Receipt, BarChart3, Wallet, Moon, Sun, LogOut } from "lucide-react";
 import "../styles/Navbar.css"
 
 const navItems = [
@@ -29,6 +29,7 @@ function Navbar({isDarkTheme, onToggleTheme}){
                     <NavLink
                         key={item.path}
                         to={item.path}
+                        end={item.path === "/"}
                         className={({isActive}) => (isActive? "nav-link active" : "nav-link")}
                     >   
                         <Icon size={20}/>
@@ -37,20 +38,6 @@ function Navbar({isDarkTheme, onToggleTheme}){
                     );
                 })}
             </nav>
-
-            <button
-                type="button"
-                className="theme-toggle"
-                onClick={onToggleTheme}
-                >
-                <div className="toggle-circle">
-
-                    {isDarkTheme ? <Sun size={16}/> : <Moon size={16}/>}
-                </div>
-                <span>
-                    {isDarkTheme ? "Light Theme" : "Dark Theme"}
-                </span>
-            </button>
         </aside>
     );
 }
