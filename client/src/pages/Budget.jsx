@@ -4,6 +4,8 @@ import { useAuth } from "../context/AuthContext";
 import "../styles/BudgetPage.css";
 
 function Budget({budget, month, onSaveBudget}){
+    const { updateUser, user } = useAuth();
+
     const [budgetAmount, setBudgetAmount] = useState(0);
     const [selectedMonth, setSelectedMonth] = useState(month);
     const [error, setError] = useState("");
@@ -16,7 +18,7 @@ function Budget({budget, month, onSaveBudget}){
     }, [budget, month]);
 
     const handleReset = () => {
-        setBudgetAmount(budget || 0);
+        setBudgetAmount(0);
         setSelectedMonth(month || "2026-06");
         setError("");
         setSuccess("");
@@ -37,6 +39,8 @@ function Budget({budget, month, onSaveBudget}){
                 budget: Number(budgetAmount),
                 budgetMonth: selectedMonth,
             });
+
+            updateUser(data.user);
             onSaveBudget(Number(budgetAmount), selectedMonth);
 
             setSuccess(`✓ ${data.message}`);

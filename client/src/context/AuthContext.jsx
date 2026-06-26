@@ -76,6 +76,11 @@ export function AuthProvider({ children }) {
         }
     }, []);
 
+    const updateUser = useCallback((updatedUser) => {
+        setUser(updatedUser);
+        localStorage.setItem(USER_KEY, JSON.stringify(updatedUser));
+    }, []);
+
     const isAuthenticated = Boolean(user);
 
     return (
@@ -88,6 +93,7 @@ export function AuthProvider({ children }) {
                 register,
                 login,
                 logout,
+                updateUser
             }}
         >
             {children}
