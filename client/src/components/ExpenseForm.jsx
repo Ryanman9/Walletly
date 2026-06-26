@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { categories } from "../data/dummyData";
+
+const categories = [
+  "Food",
+  "Transport",
+  "Shopping",
+  "Entertainment",
+  "Education",
+  "Health",
+  "Other",
+];
 
 const emptyExpense = {
     title: "",
@@ -12,10 +21,12 @@ function ExpenseForm({ onAddExpense }){
     const [expense, setExpense] = useState(emptyExpense);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
         setExpense((currentExpense) => ({...currentExpense, [name]:value}));
+        if(error) setError ("");
     };
 
     const clearForm = () => {
@@ -24,7 +35,7 @@ function ExpenseForm({ onAddExpense }){
         setSuccess("");
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if(!expense.title.trim()){
@@ -39,18 +50,23 @@ function ExpenseForm({ onAddExpense }){
             return;
         }
 
-        onAddExpense({
-            id: Date.now(),
-            title: expense.title.trim(),
-            amount: Number(expense.amount),
-            category: expense.category,
-            date: expense.date,
-        });
+        setLoading(true);
 
-        setError("");
-        setSuccess("Expense added successfully!");
+        try{
+            await onAddExpense({
+                id: Date.now(),
+                title: expense.title.trim(),
+                amount: Number(expense.amount),
+                category: expense.category,
+                date: expense.date,
+            });
 
-        setExpense(emptyExpense);
+            setSuccess("Expense added successfully!");
+        }catch(err){
+            setError(err.message || "Failed to add expense, Please try again.");
+        }finally{
+            setLoading(false);
+        }
     };
 
     return(
@@ -74,6 +90,7 @@ function ExpenseForm({ onAddExpense }){
                     placeholder = "e.g Stationary for exam"
                     value={expense.title}
                     onChange={handleChange}
+                    disabled={loading}
                 />
             </label>
 
@@ -87,6 +104,7 @@ function ExpenseForm({ onAddExpense }){
                     placeholder = "₹500"
                     value = {expense.amount}
                     onChange = {handleChange}
+                    disabled={loading}
                 />
             </label>
 
@@ -97,6 +115,7 @@ function ExpenseForm({ onAddExpense }){
                     name = "category"
                     value = {expense.category}
                     onChange = {handleChange}
+                    disabled = {loading}
                 >
                     {categories.map((category) => (
                         <option key={category}
@@ -116,14 +135,15 @@ function ExpenseForm({ onAddExpense }){
                     type = "date"
                     value = {expense.date}
                     onChange = {handleChange}
+                    disabled={loading}
                 />
             </label>
 
             <div className="btn-row">
-                <button type="submit" className="primary-btn">
-                    Add Expense
+                <button type="submit" className="primary-btn" disabled={loading}>
+                    {loading ? "Adding…" : "Add Expense"}
                 </button>
-                <button type="button" className="secondary-btn" onClick={clearForm}>
+                <button type="button" className="secondary-btn" onClick={clearForm} disabled={loading}>
                     Clear Form
                 </button>
             </div> 
