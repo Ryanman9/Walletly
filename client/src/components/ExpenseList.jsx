@@ -1,10 +1,26 @@
 import { useMemo, useState } from "react";
-import { categories } from "../data/dummyData";
+import { expenseAPI } from "../api/api";
 
-function ExpenseList({ expenses, onDeleteExpense }){
+const categories = [
+  "Food",
+  "Transport",
+  "Shopping",
+  "Entertainment",
+  "Education",
+  "Health",
+  "Other",
+];
+
+function ExpenseList({ expenses, onDeleteExpense, onUpdateExpense, loading }){
     const [searchTerm, setSearchTerm] = useState("");
     const [categoryFilter, setCategoryFilter] = useState("All");
     const [sortBy, setSortBy] = useState("date-desc");
+    const [deletingId, setDeletingId] = useState(null);
+
+    const [editingId, setEditingId] = useState(null);
+    const [editForm, setEditForm] = useState({});
+    const [editError, setEditError] = useState("");
+    const [savingId, setSavingId] = useState(null);
 
     const filteredExpenses = useMemo(() => {
         return expenses
@@ -20,6 +36,69 @@ function ExpenseList({ expenses, onDeleteExpense }){
                 return new Date(second.date) - new Date(first.date);
             });
     }, [categoryFilter,expenses, searchTerm, sortBy]);
+
+    const handleDelete = async (id) => {
+        setDeletingId(id);
+        try {
+            await onDeleteExpense(id);
+        } finally {
+            setDeletingId(null);
+        }
+    };
+
+    const handleEditOpen = (expense) => {
+        setEditingId(expense._id);
+        setEditForm({
+            title:    expense.title,
+            amount:   expense.amount,
+            category: expense.category,
+            date:     expense.date,
+        });
+        setEditError("");
+    };
+
+    const handleEditCancel = () => {
+        setEditingId(null);
+        setEditForm({});
+        setEditError("");
+    };
+    
+    const handleEditChange = (e) => {
+        const { name, value } = e.target;
+        setEditForm((prev) => ({ ...prev, [name]: value }));
+        if (editError) setEditError("");
+    };
+
+    const handleEditSave = async (id) => {
+        if (!editForm.title.trim()) {
+            setEditError("Title cannot be empty.");
+            return;
+        }
+        if (Number(editForm.amount) <= 0) {
+            setEditError("Amount must be greater than zero.");
+            return;
+        }
+    
+        setSavingId(id);
+        setEditError("");
+    
+        try {
+            const data = await expenseAPI.update(id, {
+                title:    editForm.title.trim(),
+                amount:   Number(editForm.amount),
+                category: editForm.category,
+                date:     editForm.date,
+            });
+
+            onUpdateExpense(data.expense);
+            setEditingId(null);
+            setEditForm({});
+        } catch (err) {
+            setEditError(err.message || "Failed to save. Please try again.");
+        } finally {
+            setSavingId(null);
+        }
+    };
 
     return(
         <section className="expenselist-page">
@@ -45,7 +124,7 @@ function ExpenseList({ expenses, onDeleteExpense }){
                     onChange={(event) => setCategoryFilter(event.target.value)}
                     >
                     <option value="" disabled>
-                        Select Category
+                        All Categories
                     </option>
 
                     <option value="All">All</option>
@@ -73,34 +152,124 @@ function ExpenseList({ expenses, onDeleteExpense }){
                             <th>Category</th>
                             <th>Amount</th>
                             <th>Date</th>
-                            <th>Delete</th>
+                            <th>Edit / Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredExpenses.map((expense) => (
-                            <tr key={expense.id}>
+                        {filteredExpenses.map((expense) =>
+                            editingId === expense._id ? (
+                            <>
+                                <tr key={expense._id} className="edit-row">
+                                    <td>
+                                        <input
+                                        className="edit-input"
+                                        name="title"
+                                        type="text"
+                                        value={editForm.title}
+                                        onChange={handleEditChange}
+                                        autoFocus
+                                        />
+                                    </td>
+
+                                    <td>
+                                        <select
+                                        className="edit-select"
+                                        name="category"
+                                        value={editForm.category}
+                                        onChange={handleEditChange}
+                                        >
+                                        {categories.map((cat) => (
+                                            <option key={cat} value={cat}>{cat}</option>
+                                        ))}
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <input
+                                        className="edit-input"
+                                        name="amount"
+                                        type="number"
+                                        min="0.01"
+                                        value={editForm.amount}
+                                        onChange={handleEditChange}
+                                        />
+                                    </td>
+
+                                    <td>
+                                        <input
+                                        className="edit-input"
+                                        name="date"
+                                        type="date"
+                                        value={editForm.date}
+                                        onChange={handleEditChange}
+                                        />
+                                    </td>
+
+                                    <td>
+                                        <div className="action-btns">
+                                        <button
+                                            type="button"
+                                            className="text-button save"
+                                            onClick={() => handleEditSave(expense._id)}
+                                            disabled={savingId === expense._id}
+                                        >
+                                            {savingId === expense._id ? "…" : "Save"}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="text-button cancel"
+                                            onClick={handleEditCancel}
+                                            disabled={savingId === expense._id}
+                                        >
+                                            Cancel
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                {editError && (
+                                <tr key={`${expense._id}-err`} className="edit-error-row">
+                                    <td colSpan={5}>
+                                    <p className="edit-inline-error">{editError}</p>
+                                    </td>
+                                </tr>
+                                )}
+                            </>
+                            ) : (
+                            <tr key={expense._id}>
                                 <td>{expense.title}</td>
-                                <td>
+                                    <td>
                                     <span className="category-pill">{expense.category}</span>
                                 </td>
                                 <td>₹{expense.amount.toLocaleString()}</td>
                                 <td>{expense.date}</td>
-
                                 <td>
-                                    <button
+                                    <div className="action-btns">
+                                        <button
+                                        type="button"
+                                        className="text-button edit"
+                                        onClick={() => handleEditOpen(expense)}
+                                        disabled={!!deletingId}
+                                        >
+                                        Edit
+                                        </button>
+                                        <button
                                         type="button"
                                         className="text-button"
-                                        onClick={() => onDeleteExpense(expense.id)}
-                                    >
-                                        Delete
-                                    </button>
+                                        onClick={() => handleDelete(expense._id)}
+                                        disabled={deletingId === expense._id}
+                                        >
+                                        {deletingId === expense._id ? "…" : "Delete"}
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
-                        ))}
+                            )
+                        )}
                     </tbody>
                 </table>
             </div>
-            {filteredExpenses.length === 0 && (
+            {!loading && filteredExpenses.length === 0 && (
                 <p className="empty-state">No expenses match your search yet.</p>
             )}
         </section>
