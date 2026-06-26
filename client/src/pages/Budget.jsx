@@ -4,8 +4,6 @@ import { useAuth } from "../context/AuthContext";
 import "../styles/BudgetPage.css";
 
 function Budget({budget, month, onSaveBudget}){
-    const { updateUser, user } = useAuth();
-
     const [budgetAmount, setBudgetAmount] = useState(0);
     const [selectedMonth, setSelectedMonth] = useState(month);
     const [error, setError] = useState("");

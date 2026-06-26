@@ -1,7 +1,7 @@
 import ExpenseList from "../components/ExpenseList";
 import "../styles/ExpenseList.css";
 
-function Expenses({ expenses, onDeleteExpense }){
+function Expenses({ expenses, onDeleteExpense, onUpdateExpense, loading }){
     return(
         <div className="page-container">
             <header className="page-header">
@@ -10,7 +10,12 @@ function Expenses({ expenses, onDeleteExpense }){
                 <p>Review every expense entry and remove mistakes</p>
             </header>
             
-            <ExpenseList expenses={expenses} onDeleteExpense={onDeleteExpense}/>
+            <ExpenseList 
+                expenses={expenses}
+                onDeleteExpense={onDeleteExpense}
+                onUpdateExpense={onUpdateExpense}
+                loading={loading}
+            />
         </div>
     );
 }
