@@ -10,7 +10,7 @@ function BudgetCard({budget, month, totalExpenses}){
     const spentPercent = budget > 0 ? Math.min((totalExpenses/budget) * 100, 100) : 0;
 
     return (
-        <section className="buget-card">
+        <section className="budget-card">
             <div className="section-heading">
                 <div>
                     <p className="over-heading">Budget progress</p>
