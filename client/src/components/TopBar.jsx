@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import "../styles/TopBar.css";
 
 const PAGE_TITLES = {
-  "/":            { title: "Dashboard",     sub: "Student Budget Dashboard" },
+  "/":            { title: "Dashboard",     sub: "Budget Dashboard" },
   "/addexpense":  { title: "Add Expense",   sub: "Record a new spending entry" },
   "/expenses":    { title: "Expenses",      sub: "Search, filter and manage entries" },
   "/analytics":   { title: "Analytics",     sub: "Insights into your spending" },
