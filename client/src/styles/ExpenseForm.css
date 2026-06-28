@@ -88,3 +88,37 @@
 .dark-theme .form-page input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(0.75);
 }
+
+@media (max-width: 768px) {
+
+  .form-page {
+    padding: var(--sp-4); 
+    gap: var(--sp-3);
+    border-radius: var(--radius-md);
+  }
+
+  .form-page label {
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .form-page input,
+  .form-page select {
+    height: 40px;
+    padding: 0 12px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+
+  .form-page select {
+    padding-right: 28px;
+    background-position: right 10px center;
+    background-size: 10px;
+  }
+
+  .form-page input:focus,
+  .form-page select:focus {
+    box-shadow: 0 0 0 2px rgba(190, 242, 100, 0.12);
+  }
+}
