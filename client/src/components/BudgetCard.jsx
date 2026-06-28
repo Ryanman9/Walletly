@@ -6,7 +6,7 @@ function formatMonth(month){
 }
 
 function BudgetCard({budget, month, totalExpenses}){
-    const remaining = Math.max(budget-totalExpenses,0);
+    const remaining = budget-totalExpenses;
     const spentPercent = budget > 0 ? Math.min((totalExpenses/budget) * 100, 100) : 0;
 
     return (
@@ -28,7 +28,35 @@ function BudgetCard({budget, month, totalExpenses}){
                     Budget <strong>₹{budget.toLocaleString()}</strong>
                 </p>
                 <p>
-                    Remaining <strong>₹{remaining.toLocaleString()}</strong>
+                    {remaining >= 0 ? "Remaining" : "Exceeded by"}{" "}
+                    <strong>₹{Math.abs(remaining).toLocaleString()}</strong>
+                </p>
+            </div>
+
+            <div className="budget-info">
+                <p
+                    className={
+                        remaining > budget * 0.5
+                            ? "budget-healthy"
+                            : remaining > budget * 0.1
+                            ? "budget-warning"
+                            : remaining > 0
+                            ? "budget-danger"
+                            : remaining === 0
+                            ? "budget-used"
+                            : "budget-exceeded"
+                    }
+                >
+                        {remaining > budget * 0.5
+                        ? "✓ Spending looks healthy"
+                        : remaining > budget * 0.1
+                        ? "◔ Approaching budget limit"
+                        : remaining > 0
+                        ? "⚠ Almost at budget limit"
+                        : remaining === 0
+                        ? "• Budget fully used"
+                        : "☹ Budget exceeded"
+                    }
                 </p>
             </div>
         </section>
