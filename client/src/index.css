@@ -292,3 +292,63 @@ ul, ol { list-style: none; }
   color: #379131;
   border-color: #b5dfc6;
 }
+
+@media (max-width: 768px) {
+
+  html {
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding:
+      var(--sp-3)
+      var(--sp-3)
+      80px
+      var(--sp-3);
+  }
+
+  .page-header h1 {
+    font-size: 1.7rem;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .page-header > p {
+    font-size: 0.82rem;
+    max-width: 100%;
+  }
+
+  .page-header {
+    margin-bottom: var(--sp-5);
+  }
+
+  .page-header .over-heading,
+  .section-heading .over-heading {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .section-heading h2 {
+    font-size: 1.2rem;
+  }
+
+  body {
+    font-size: 0.8rem;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
+
+  .error-msg,
+  .success-msg {
+    font-size: 0.72rem;
+    padding: 8px 12px;
+  }
+
+  .btn-row {
+    gap: 8px;
+  }
+}
