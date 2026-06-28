@@ -1,6 +1,8 @@
 .expenselist-page {
   background: var(--surface);
-  border: 1.5px solid var(--border);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 2px 4px rgba(0,0,0,0.06);
   border-radius: var(--radius-lg);
   padding: var(--sp-6);
   transition: background var(--transition-md);
@@ -263,4 +265,82 @@ tbody td:first-child {
 
 .dark-theme .text-button:hover {
   background: rgba(239,68,68,.2);
+}
+
+.edit-row {
+  background: var(--clr-accent-Vlight) !important;
+  transition: background var(--transition);
+}
+
+.dark-theme .edit-row {
+  background: rgba(227, 239, 38, 0.06) !important;
+}
+
+.edit-input,
+.edit-select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1.5px solid var(--clr-green-400);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.edit-input:focus,
+.edit-select:focus {
+  border-color: var(--clr-green-500);
+  box-shadow: 0 0 0 3px rgba(93, 190, 163, 0.15);
+}
+
+.action-btns {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: nowrap;
+}
+
+.text-button.edit {
+  color: var(--clr-green-600);
+}
+
+.text-button.edit:hover {
+  background: #eaf7ef;
+  color: var(--clr-green-800);
+}
+
+.text-button.save {
+  color: var(--clr-green-700);
+  font-weight: 700;
+}
+
+.text-button.save:hover {
+  background: #eaf7ef;
+}
+
+.text-button.cancel {
+  color: var(--text-muted);
+}
+
+.text-button.cancel:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.edit-error-row td {
+  padding: 0 var(--sp-4) var(--sp-2);
+  background: var(--clr-danger-bg);
+}
+
+.edit-inline-error {
+  font-size: var(--text-xs);
+  color: var(--clr-danger);
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--clr-danger-border);
+  background: var(--clr-danger-bg);
 }
