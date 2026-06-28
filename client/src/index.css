@@ -16,7 +16,7 @@
   --clr-green-100: #f7fee7;
   --clr-green-50:  #fcfff7;
 
-  --clr-accent:        #bef264;
+  --clr-accent:        #b6ff38;
   --clr-accent-vlight: #f7fee7;
   --clr-accent-light:  #d9f99d;
   --clr-accent-dim:    #84cc16;
@@ -31,8 +31,8 @@
   --clr-text-secondary-light:  #475569;
   --clr-text-muted-light:      #94a3b8;
 
-  --clr-bg-dark:              #030712;
-  --clr-surface-dark:         #111827;
+  --clr-bg-dark:              #010308;
+  --clr-surface-dark:         #0b0f1b;
   --clr-surface2-dark:        #1a2e22;
 
   --clr-border-dark:          #243b2e;
@@ -49,6 +49,7 @@
   --clr-success-bg:     #052e16;
 
   --nav-active-gradient: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-dark));
+  --hover-color: rgba(0, 0, 0, 0.04);
   --icon-gradient: linear-gradient(180deg, var(--clr-accent), var(--clr-accent-dark));
   --logo-gradient: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-dim));
 
@@ -93,6 +94,7 @@
   --nav-active-gradient: linear-gradient(135deg, var(--clr-accent-dark), var(--clr-accent));
   --icon-gradient: linear-gradient(180deg, var(--clr-accent-dark), var(--clr-accent));
   --logo-gradient: linear-gradient(135deg, var(--clr-accent-dim), var(--clr-accent));
+  --hover-color: rgba(255, 255, 255, 0.06);
 }
 
 *, *::before, *::after { 
@@ -139,16 +141,31 @@ ul, ol { list-style: none; }
 .app-page {
   display: flex;
   height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  transition: background var(--transition-md);
+}
+
+.app-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-right.full-width {
+  width: 100%;
 }
 
 .main-content {
   flex: 1;
-  padding: var(--sp-7);
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: var(--bg);
-  transition: background-color var(--transition-md), color var(--transition-md);
-  min-width: 0;
+  padding: var(--sp-4);
+  background: var(--bg);
+  transition: background var(--transition-md);
 }
 
 /* Page Layout and Text */
@@ -207,13 +224,6 @@ ul, ol { list-style: none; }
   font-size: var(--text-xl);
   font-weight: 700;
   color: var(--text-primary);
-}
-
-.two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-5);
-  margin-bottom: var(--sp-5);
 }
 
 /* Shared Button */
