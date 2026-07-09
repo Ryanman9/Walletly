@@ -7,6 +7,7 @@ const {
     getExpenseById,
     updateExpense,
     deleteExpense,
+    getAnalytics,
 } = require("../controllers/expenseController");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -15,6 +16,7 @@ const { expenseValidator } = require("../middleware/validationMiddleware");
 router.use(protect);
 
 router.route("/").get(getExpenses).post(expenseValidator, createExpense);
+router.get("/analytics", getAnalytics);
 
 router
     .route("/:id")

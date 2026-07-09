@@ -44,6 +44,8 @@ export const expenseAPI = {
     getById: (id) => request("GET", `/expenses/${id}`),
     update: (id, data) => request("PUT", `/expenses/${id}`, data),
     delete: (id) => request("DELETE", `/expenses/${id}`),
+    getAnalytics: (month) =>
+        request("GET", `/expenses/analytics${month ? `?month=${month}` : ""}`),
 };
 
 export const userAPI = {
