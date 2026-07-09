@@ -73,7 +73,7 @@ export function PieChart({ data, size = 200, thickness = 26, formatValue = (v) =
     );
 }
 
-export function BarChart({ data, height = 200, color = "var(--clr-accent-dark)", formatValue = (v) => v }) {
+export function BarChart({ data, height = 200, color = "var(--clr-accent-dim)", formatValue = (v) => v }) {
     const max = Math.max(...data.map((d) => d.value), 1);
     const [hoverIdx, setHoverIdx] = useState(null);
 
