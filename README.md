@@ -6,6 +6,7 @@ Walletly is a full-stack personal finance management web application built using
 
 * Add and manage income sources
 * Track daily expenses
+* Analyze your expenses through analytics page
 * Categorize transactions
 * Budget management system
 * Transaction history with filters
@@ -97,7 +98,6 @@ JWT_SECRET
 
 ## Future Improvements
 
-* Analytics Dashboard
 * Monthly financial reports
 * Export data as PDF or CSV
 * Multi currency support
